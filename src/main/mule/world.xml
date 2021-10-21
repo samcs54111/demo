@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="worldFlow" doc:id="3c81a6a0-7a41-44ee-a7cd-806b56f8229f" >
+		<logger level="INFO" doc:name="Logger" doc:id="7495c6d7-20b3-48df-a7c6-5be66ec66903" message="PROCESS START"/>
+		<ee:transform doc:name="Transform Message" doc:id="d59c8784-6f5e-4f10-bd40-dca2b173304f" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+  message: "Hello world"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="9700fa9f-c318-49aa-8bf9-340792498211" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="52479e6b-e081-48f1-8687-59ec367c35ab" message="PROCESS COMPLETED"/>
+	</flow>
+</mule>
